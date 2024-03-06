@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;  //Intelli j gave me this, sorts in order.
 
 public class TodoList {
 
@@ -47,9 +48,11 @@ public class TodoList {
      * @return the name of the task with the current highest urgency (a String).
      */
     public String mostUrgent() {
+        // Sort the tasks in descending order of urgency
+        Collections.sort(tasks, (Task task1, Task task2) -> task2.getUrgency() - task1.getUrgency());
 
-        return null;
-
+        // Return the name of the first task
+        return tasks.get(0).getName();
     }
 
     /**
@@ -57,9 +60,11 @@ public class TodoList {
      * @return the average urgency across all tasks (a double).
      */
     public double averageUrgency() {
-
-        return 0.0;
-
+        double sum = 0.0;  // Math assessment flashback
+        for (Task task : tasks) {
+            sum += task.getUrgency();
+        }
+        return sum / tasks.size();
     }
 
     /**
@@ -78,8 +83,8 @@ public class TodoList {
      */
     public String toString() {
 
-        return "";
-        
+    return "";
+
     }
 
 }
